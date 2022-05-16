@@ -1,13 +1,13 @@
 package htwberlinwebtech.Kalotracker.web.api;
 
-public class FoodCreateRequest {
+public class FoodManipulationRequest {
     private String name;
     private long kohlenhydrate;
     private long Fett;
     private long Eiweiß;
     private long Kalorien;
 
-    public FoodCreateRequest(String name, long kohlenhydrate, long fett, long eiweiß, long kalorien) {
+    public FoodManipulationRequest(String name, long kohlenhydrate, long fett, long eiweiß, long kalorien) {
         this.name = name;
         this.kohlenhydrate = kohlenhydrate;
         Fett = fett;
