@@ -5,10 +5,8 @@ import htwberlinwebtech.Kalotracker.service.FoodService;
 import htwberlinwebtech.Kalotracker.web.api.Food;
 import htwberlinwebtech.Kalotracker.web.api.FoodCreateRequest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -28,6 +26,12 @@ public class FoodRestController {
     @GetMapping(path = "/api/v1/food")
     public ResponseEntity<List<Food>> fetchFood()  {
         return ResponseEntity.ok(foodService.findAll());
+    }
+
+    @GetMapping(path = "/api/v1/persons/{id}")
+    public ResponseEntity<Food> fetchFoodById(@PathVariable Long id) {
+        var food = foodService.findById(id);
+        return food != null? ResponseEntity.ok(food) : ResponseEntity.notFound().build();
     }
 
     @PostMapping(path = "/api/v1/food")

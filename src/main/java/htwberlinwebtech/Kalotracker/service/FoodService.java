@@ -30,6 +30,12 @@ public class FoodService {
         foodEntity = foodRepository.save(foodEntity);
         return transformEntity(foodEntity);
     }
+
+    public Food findById(Long id) {
+        var foodEntity = foodRepository.findById(id);
+        return foodEntity.map(this::transformEntity).orElse(null);
+    }
+
     private Food transformEntity(FoodEntity foodEntity) {
         return new Food(
                 foodEntity.getId(),
